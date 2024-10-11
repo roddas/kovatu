@@ -4,8 +4,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: laravel-app
-    container_name: laravel-app
+    image: kovatu_web
+    container_name: kovatu_web
     ports:
       - "${APP_PORT}:8000"
     volumes:
@@ -17,7 +17,7 @@ services:
 
   mysql:
     image: mysql:8.0
-    container_name: mysql-db
+    container_name: kovatu_database
     restart: always
     ports:
       - "3306:3306"

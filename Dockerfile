@@ -28,5 +28,5 @@ RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
 # Expose the port
 EXPOSE 9000
-
+RUN chmod +x /usr/local/bin/docker-config.sh
 CMD ["/usr/local/bin/docker-config.sh"]
