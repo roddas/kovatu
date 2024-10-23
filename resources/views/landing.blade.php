@@ -27,7 +27,7 @@
             {{-- Remember checkbox --}}
             <div class="mb-4">
                 <input type="checkbox" name="remember" id="remember">
-                <label for="remember">Lembrar-me</label>
+                <label for="remember" class="ml-2">Lembrar-me</label>
             </div>
             {{-- Submit button --}}
             <button type="submit" class="">Entrar</button>
@@ -35,9 +35,8 @@
                 <a href="#" class="link my-2">Esqueceu a senha ?</a>
             </p>
             <a href="#" class="link mb-4">Criar uma conta</a>
-
         </form>
-        
+
         {{-- Quotes side --}}
         <section class="my-auto">
             <img src="{{ asset('images/quotes.svg') }}" width="56" alt="">
