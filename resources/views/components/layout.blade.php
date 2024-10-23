@@ -15,7 +15,7 @@
 
 <body>
     <div class=" py-4 mx-auto flex justify-center">
-        <a href="{{ route('index'); }}"><img src="{{ asset('logo.svg') }}" alt=""></a>
+        <a href="{{ route('index') }}"><img src="{{ asset('logo.svg') }}" alt=""></a>
     </div>
     <div class="max-w-screen-xl mx-auto">
         <section class=" ">
@@ -26,4 +26,4 @@
     <x-base.footer></x-base.footer>
 </body>
 
-</html> 
+</html>
