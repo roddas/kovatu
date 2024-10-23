@@ -22,6 +22,7 @@
             {{ $slot }}
         </section>
     </div>
+    <x-base.background :source="'africa'"></x-base.background>
     <x-base.footer></x-base.footer>
 </body>
 
