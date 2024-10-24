@@ -3,7 +3,7 @@
         raízes.
     </h1>
     <section class="md:flex md:justify-around w-full mt-20 ">
-        <form action="" method="post" class="p-8 md:w-[50%]">
+        <form action="{{ route('index') }}" method="post" class="p-8 md:w-[50%]">
             @csrf
             {{-- Email --}}
             <div class="mb-4">
