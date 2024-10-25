@@ -1,4 +1,4 @@
-<x-layout image="bubu">
+<x-layout image="scythe">
     <span class="literata-bold title">Notas do autor</span>
 
     <hr class="bg-primaryBlue my-2">
