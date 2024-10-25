@@ -1,7 +1,6 @@
 <x-layout image="scythe">
-    <span class="literata-bold title">Notas do autor</span>
+    <x-base.title title="Notas do autor" />
 
-    <hr class="bg-primaryBlue my-2">
     <div class="literata-medium mb-6">
         <p class="text-justify text-lg "> Ko Vatuvembela <span
                 class=" text-primaryBlue literata-medium-italic ">/vatuvembelá/</span>, é
@@ -22,12 +21,11 @@
             Angola, e todos os Angolanos que amam a sua cultura
             e preocupam com ela.
         </p>
-
     </div>
     <div class="literata-medium mb-6 ">
         <p class="float-right"> Brasília, aos 15 de Fevereiro de 2024 </p> <br />
         <p class="float-right"> Rodolfo Cabral Neves </p>
         </p>
     </div>
-    <x-base.back />
+    <x-base.home />
 </x-layout>

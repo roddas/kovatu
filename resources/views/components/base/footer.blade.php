@@ -5,7 +5,7 @@
                     <a class="link" href="{{ route('about') }}">Sobre</a>
                 </li>
                 <li class="md:inline mx-5">
-                    <a class="link" href="">Contactos</a>
+                    <a class="link" href="{{ route('contacts') }}">Contactos</a>
                 </li>
                 <li class="md:inline mx-5">
                     <a class="link" href="#">Suporte</a>
