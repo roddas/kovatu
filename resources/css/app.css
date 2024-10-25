@@ -1,8 +1,54 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,500;0,700;1,300;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=Martian+Mono:wght@100..800&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* <uniquifier>: Use a unique and descriptive class name */
+/* <weight>: Use a value from 200 to 900 */
+
+.literata-medium {
+  font-family: "Literata", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.literata-thin {
+  font-family: "Literata", serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.literata-medium-italic {
+  font-family: "Literata", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.literata-thin-italic {
+  font-family: "Literata", serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.literata-bold {
+  font-family: "Literata", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.literata-semibold {
+  font-family: "Literata", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
 
 .roboto-light {
   font-family: "Roboto", sans-serif;
@@ -43,8 +89,9 @@
 .title {
   @apply text-4xl font-normal text-center
 }
-.link{
-  @apply text-primaryBlue hover:underline text-base 
+
+.link {
+  @apply text-primaryBlue hover:underline text-base
 }
 
 input[type="text"],
@@ -56,9 +103,11 @@ input[type="url"],
 textarea {
   @apply border rounded-[16px] w-full pl-5 py-[16px] border-primaryBlue bg-transparent;
 }
-label{
+
+label {
   @apply text-primaryBlue text-[16px] font-semibold
 }
-button{
-  @apply bg-primaryBlue text-white hover:bg-secondaryBlue flex justify-center  font-semibold w-full text-[16px] rounded-[16px] px-[32px] py-[16px]
+
+button {
+  @apply bg-primaryBlue text-white hover:bg-secondaryBlue flex justify-center font-semibold w-full text-[16px] rounded-[16px] px-[32px] py-[16px]
 }

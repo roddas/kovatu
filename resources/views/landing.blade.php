@@ -1,9 +1,9 @@
 <x-layout>
-    <h1 class="text-primaryBlue title my-8 ">Um lugar para partilharmos conhecimentos e entendermos melhor as nossas
+    <h1 class="text-primaryBlue title my-8 literata-medium ">Um lugar para partilharmos conhecimentos e entendermos melhor as nossas
         raízes.
     </h1>
     <section class="md:flex md:justify-around w-full mt-20 ">
-        <form action="" method="post" class="p-8 md:w-[50%]">
+        <form action="{{ route('index') }}" method="post" class="p-8 md:w-[50%]">
             @csrf
             {{-- Email --}}
             <div class="mb-4">
@@ -41,7 +41,7 @@
         <section class="my-auto">
             <img src="{{ asset('images/quotes.svg') }}" width="56" alt="">
             <div class="flex justify-center text-center">
-                <p class="text-5xl font-thin text-primaryBlue w-[80%] text-justify italic">Yamwangana ixi kuswa</p>
+                <p class="text-5xl literata-thin-italic text-primaryBlue w-[80%] text-justify">Yamwangana ixi kuswa</p>
             </div>
             <img src="{{ asset('images/quotes.svg') }}" width="56" alt=""
                 class="rotate-180 float-right mb-5">
