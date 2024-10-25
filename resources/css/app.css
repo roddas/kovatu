@@ -22,6 +22,13 @@
   font-style: normal;
 }
 
+.literata-medium-italic {
+  font-family: "Literata", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: italic;
+}
+
 .literata-thin-italic {
   font-family: "Literata", serif;
   font-optical-sizing: auto;
