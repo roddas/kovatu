@@ -8,7 +8,7 @@
                     <a class="link" href="{{ route('contacts') }}">Contactos</a>
                 </li>
                 <li class="md:inline mx-5">
-                    <a class="link" href="#">Suporte</a>
+                    <a class="link" href="{{ route('support') }}">Suporte</a>
                 </li>
                 <li class="md:inline mx-5">
                     <a class="link" href="#">Logout</a>
