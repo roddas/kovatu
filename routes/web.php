@@ -34,7 +34,3 @@ Route::prefix('public')->group(function () {
 Route::fallback(function () {
     return view('landing');
 });
-
-// Route::get('/', function () {
-//     return view('landing');
-// })->name('index');
