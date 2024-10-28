@@ -14,11 +14,11 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body>
+<body class="">
     <div class=" py-4 mx-auto flex justify-center">
         <a href="{{ route('index') }}"><img src="{{ asset('logo.svg') }}" alt=""></a>
     </div>
-    <div class="max-w-screen-xl w-[90%]  mx-auto">
+    <div class="max-w-screen-xl w-[90%] leading-9 mx-auto">
         <section class="">
             {{ $slot }}
         </section>

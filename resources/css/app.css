@@ -5,8 +5,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/* <uniquifier>: Use a unique and descriptive class name */
-/* <weight>: Use a value from 200 to 900 */
+@layer utilities {
+  .text-base {
+    font-size: 16px;
+  }
+}
 
 .literata-medium {
   font-family: "Literata", serif;
@@ -101,13 +104,17 @@ input[type="search"],
 input[type="tel"],
 input[type="url"],
 textarea {
-  @apply border rounded-[16px] w-full pl-5 py-[16px] border-primaryBlue bg-transparent;
+  @apply border rounded-[16px] w-full pl-5 py-[5px] border-primaryBlue bg-transparent;
 }
 
 label {
-  @apply text-primaryBlue text-[16px] font-semibold
+  @apply text-primaryBlue text-base font-semibold
 }
 
 button {
-  @apply bg-primaryBlue text-white hover:bg-secondaryBlue flex justify-center font-semibold w-full text-[16px] rounded-[16px] px-[32px] py-[16px]
+  @apply bg-primaryBlue text-white hover:bg-secondaryBlue flex justify-center font-semibold w-full text-base rounded-[16px] px-[32px] py-[15px]
+}
+
+.contact-icon {
+  @apply h-6 w-6 mr-2 text-primaryBlue
 }

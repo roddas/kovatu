@@ -1,6 +1,6 @@
 <x-layout image="elephant">
     <x-base.title title="Suporte" />
-    <div class="text-lg text-justify leading-6 literata-medium">
+    <div class="text-lg text-justify literata-medium">
 
         <p>
             Esta plataforma se encontra em constante
