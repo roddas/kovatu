@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\UtilizadorController;
 use Illuminate\Support\Facades\Route;
 
 // Index page
@@ -24,10 +25,12 @@ Route::prefix('public')->group(function () {
         return view('public/support');
     })->name('support');
 
-    // Create user page
+    // Create user page view
     Route::get('signup', function () {
         return view('public/signup');
     })->name('signup');
+
+    Route::post('signup', [UtilizadorController::class, 'store'])->name('signup');
 });
 
 // The last one

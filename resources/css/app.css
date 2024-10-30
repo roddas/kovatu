@@ -11,6 +11,10 @@
   }
 }
 
+.error {
+  @apply text-red-500 text-base
+}
+
 .literata-medium {
   font-family: "Literata", serif;
   font-optical-sizing: auto;

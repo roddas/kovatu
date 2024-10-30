@@ -71,23 +71,7 @@ class Utilizador extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    public function rules()
-    {
-        return [
-            'nome' => ['required', 'string', 'min:3', 'max:45', 'trim'],
-            'sobrenome' => ['required', 'string', 'min:3', 'max:100', 'trim'],
-            'foto' => ['nullable', 'string', 'min:4', 'max:255'],
-            'password' => ['required', 'string', 'min:8', 'max:255'],
-            'email' => [
-                'string',
-                'email',
-                'max:255',
-                'lowercase',
-                'trim',
-                'email:rfc,dns',
-            ],
-        ];
-    }
+
     public function attributes()
     {
         return [
