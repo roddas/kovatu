@@ -51,6 +51,9 @@
 
         {{-- Submit button --}}
         <button type="submit" class="">Criar uma nova conta</button>
+        @if (session('created'))
+            <p class="text-green-900 my-2 text-base font-bold">{{ session('created') }}</p>
+        @endif
     </form>
     <x-base.home />
 </x-layout>
