@@ -13,6 +13,12 @@ services:
     #         - app-network
     #     env_file:
     #         - .env
+    mailcatcher:
+        container_name: kovatu_mailer
+        restart: always
+        image: dockage/mailcatcher:latest
+        ports:
+            - "1080:1080"
     mysql:
         image: mysql:8.0
         container_name: kovatu_database
