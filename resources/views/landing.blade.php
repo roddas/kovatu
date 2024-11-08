@@ -1,5 +1,6 @@
 <x-layout>
-    <h1 class="text-primaryBlue title my-8 literata-medium ">Um lugar para partilharmos conhecimentos e entendermos melhor as nossas
+    <h1 class="text-primaryBlue title my-8 literata-medium ">Um lugar para partilharmos conhecimentos e entendermos
+        melhor as nossas
         raízes.
     </h1>
     <section class="md:flex md:justify-around w-full mt-20 ">
@@ -34,7 +35,7 @@
             <p class="my-4">
                 <a href="#" class="link my-2">Esqueceu a senha ?</a>
             </p>
-            <a href="#" class="link mb-4">Criar uma conta</a>
+            <a href="{{ route('signup') }}" class="link mb-4">Criar uma conta</a>
         </form>
 
         {{-- Quotes side --}}
