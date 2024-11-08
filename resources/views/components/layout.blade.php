@@ -18,7 +18,7 @@
     <div class=" py-4 mx-auto flex justify-center">
         <a href="{{ route('index') }}"><img src="{{ asset('logo.svg') }}" alt=""></a>
     </div>
-    <div class="max-w-screen-xl mx-auto">
+    <div class="max-w-screen-xl mx-auto w-[90%]">
         <section class=" ">
             {{ $slot }}
         </section>
