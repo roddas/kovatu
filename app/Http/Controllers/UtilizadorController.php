@@ -32,10 +32,10 @@ class UtilizadorController extends Controller
                 'max:255',
                 'lowercase',
                 'email:rfc',
+                'unique:utilizador',
+
             ]
         ];
-
-
 
         $error_messages = [
             'first_name.required' => 'Por favor, preencha o nome.',
@@ -55,15 +55,27 @@ class UtilizadorController extends Controller
             'password.min' => 'A senha precisa ter pelo menos 8 caracteres.',
             'password.max' => 'A senha não pode ter mais de 255 caracteres.',
             'email.string' => 'O e-mail deve ser um texto válido.',
+            'email.unique' => 'Este e-mail já está associado a uma conta, por favor use outro.',
             'email.email' => 'Por favor, insira um e-mail válido.',
             'email.max' => 'O e-mail não pode ter mais de 255 caracteres.',
             'email.email.rfc' => 'O formato do e-mail não está correto.',
         ];
 
-        $validated = $request->validate($rules, $error_messages);
-        dd($validated);
+        $request->validate($rules, $error_messages);
+        $nome = Str::ucfirst(trim($request->first_name));
+        $sobrenome =
+            trim(Str::of($request->last_name)->headline());
+        $email = Str::of(trim($request->email))->lower();
 
+        Utilizador::create([
+            'nome' => $nome,
+            'sobrenome' =>
+            $sobrenome,
+            'email' => $email,
+            'password' => $request->password,
+        ]);
 
+        return back()->with('created', 'Tanakwé pange yami!!! Abra o seu email e ative a sua conta.');
 
         //event(new Registered($new_user));
         // Configurar mailcatcher 
