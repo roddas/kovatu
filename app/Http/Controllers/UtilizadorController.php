@@ -23,9 +23,8 @@ class UtilizadorController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'nome' => ['required', 'string', 'min:3', 'max:45', 'trim'],
-            'sobrenome' => ['required', 'string', 'min:3', 'max:100', 'trim'],
-            'foto' => ['nullable', 'string', 'min:4', 'max:255'],
+            'first_name' => ['required', 'string', 'min:3', 'max:45'],
+            'last_name' => ['required', 'string', 'min:3', 'max:100'],
             'password' => ['required', 'string', 'min:8', 'max:255', 'confirmed'],
             'email' => [
                 'string',
@@ -36,15 +35,17 @@ class UtilizadorController extends Controller
             ]
         ];
 
+
+
         $error_messages = [
-            'nome.required' => 'Por favor, preencha o nome.',
-            'nome.string' => 'O nome deve ser apenas letras.',
-            'nome.min' => 'O nome precisa ter pelo menos 3 letras.',
-            'nome.max' => 'O nome não pode ter mais de 45 letras.',
-            'sobrenome.required' => 'Por favor, preencha o sobrenome.',
-            'sobrenome.string' => 'O sobrenome deve ser apenas letras.',
-            'sobrenome.min' => 'O sobrenome precisa ter pelo menos 3 letras.',
-            'sobrenome.max' => 'O sobrenome não pode ter mais de 100 letras.',
+            'first_name.required' => 'Por favor, preencha o nome.',
+            'first_name.string' => 'O nome deve ser apenas letras.',
+            'first_name.min' => 'O nome precisa ter pelo menos 3 letras.',
+            'first_name.max' => 'O nome não pode ter mais de 45 letras.',
+            'last_name.required' => 'Por favor, preencha o sobrenome.',
+            'last_name.string' => 'O sobrenome deve ser apenas letras.',
+            'last_name.min' => 'O sobrenome precisa ter pelo menos 3 letras.',
+            'last_name.max' => 'O sobrenome não pode ter mais de 100 letras.',
             'foto.string' => 'A foto deve ser um texto válido.',
             'foto.min' => 'O texto da foto precisa ter pelo menos 4 caracteres.',
             'foto.max' => 'O texto da foto não pode ter mais de 255 caracteres.',
@@ -59,18 +60,10 @@ class UtilizadorController extends Controller
             'email.email.rfc' => 'O formato do e-mail não está correto.',
         ];
 
-        $request->validate($rules, $error_messages);
-        $nome = Str::ucfirst($request->nome);
-        $sobrenome = Str::of($request->sobrenome)->headline();
-        $email = Str::of($request->email)->lower();
+        $validated = $request->validate($rules, $error_messages);
+        dd($validated);
 
-        $new_user = Utilizador::create([
-            'nome' => $nome,
-            'sobrenome' =>
-            $sobrenome,
-            'email' => $email,
-            'password' => $request->password,
-        ]);
+
 
         //event(new Registered($new_user));
         // Configurar mailcatcher 
