@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('email', 255)->primary();
             $table->string('nome', 45);
             $table->string('sobrenome', 100);
-            $table->string('foto', 255);
+            $table->string('foto', 255)->default('default.svg');
             $table->boolean('ativada')->default(false);
             $table->string('password', 255);
             $table->rememberToken();

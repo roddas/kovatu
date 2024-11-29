@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserCreated;
 use App\Models\Usuario;
 use App\Models\Utilizador;
 use Illuminate\Auth\Events\Registered;
@@ -67,17 +68,14 @@ class UtilizadorController extends Controller
             trim(Str::of($request->last_name)->headline());
         $email = Str::of(trim($request->email))->lower();
 
-        Utilizador::create([
+        $new_user = Utilizador::create([
             'nome' => $nome,
             'sobrenome' =>
             $sobrenome,
             'email' => $email,
             'password' => $request->password,
         ]);
-
+        event(new UserCreated($new_user));
         return back()->with('created', 'Tanakwé pange yami!!! Abra o seu email e ative a sua conta.');
-
-        //event(new Registered($new_user));
-        // Configurar mailcatcher 
     }
 }
