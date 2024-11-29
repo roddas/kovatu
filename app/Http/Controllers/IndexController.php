@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UserCreated;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,6 @@ class IndexController extends Controller
      */
     public function index()
     {
-        //
         return view('landing');
     }
     /**
@@ -22,9 +22,5 @@ class IndexController extends Controller
     {
         //
         dd('okay');
-
     }
-
- 
-  
 }

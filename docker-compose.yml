@@ -1,38 +1,41 @@
-
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: kovatu_web
-    container_name: kovatu_web
-    ports:
-      - "${APP_PORT}:8000"
-    volumes:
-      - .:/var/www
-    networks:
-      - app-network
-    env_file:
-      - .env
-
-  mysql:
-    image: mysql:8.0
-    container_name: kovatu_database
-    restart: always
-    ports:
-      - "3306:3306"
-    environment:
-      MYSQL_DATABASE: ${DB_DATABASE}
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      MYSQL_USER: ${DB_USERNAME}
-    volumes:
-      - db_data:/var/lib/mysql
-    networks:
-      - app-network
-
+    # app:
+    #     build:
+    #         context: .
+    #         dockerfile: Dockerfile
+    #     image: kovatu_web
+    #     container_name: kovatu_web
+    #     ports:
+    #         - "${APP_PORT}:8000"
+    #     volumes:
+    #         - .:/var/www
+    #     networks:
+    #         - app-network
+    #     env_file:
+    #         - .env
+    mailcatcher:
+        container_name: kovatu_mailer
+        restart: always
+        image: dockage/mailcatcher:latest
+        ports:
+            - "1025:1025"
+            - "1080:1080"
+    mysql:
+        image: mysql:8.0
+        container_name: kovatu_database
+        restart: always
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_DATABASE: kovatu_database
+            MYSQL_ROOT_PASSWORD: kovatu_database
+        volumes:
+            - db_data:/var/lib/mysql
+        networks:
+            - app-network
 networks:
-  app-network:
-    driver: bridge
+    app-network:
+        driver: bridge
 
 volumes:
-  db_data:
+    db_data:

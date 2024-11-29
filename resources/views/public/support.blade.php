@@ -1,8 +1,8 @@
 <x-layout image="elephant">
     <x-base.title title="Suporte" />
-    <div class="leading-6 literata-medium">
+    <div class="text-lg text-justify literata-medium">
 
-        <p class="text-base text-justify">
+        <p>
             Esta plataforma se encontra em constante
             desenvolvimento, e os conteúdos dependem de um esforço
             comunitário, pois as línguas pertencem ao povo. Eis as
