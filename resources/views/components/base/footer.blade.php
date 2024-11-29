@@ -10,9 +10,11 @@
                 <li class="md:inline mx-5">
                     <a class="link" href="{{ route('support') }}">Suporte</a>
                 </li>
-                <li class="md:inline mx-5">
-                    <a class="link" href="#">Logout</a>
-                </li>
+                @auth
+                    <li class="md:inline mx-5">
+                        <a class="link" href="{{ route('logout') }}">Logout</a>
+                    </li>
+                @endauth
             </ul>
             <p>{{ date('Y') }} &copy; Ko Vatuvembela</p>
         </div>

@@ -5,20 +5,20 @@
 
         {{-- First Name --}}
         <div class="mb-4">
-            <label for="first_name">Primeiro Nome</label>
-            <input type="text" name="first_name" id="first_name" value="{{ old('first_name') }}"
-                placeholder="Ex. Cykolomwenyo" maxlength="30" required>
-            @error('first_name')
+            <label for="nome">Primeiro Nome</label>
+            <input type="text" name="nome" id="nome" value="{{ old('nome') }}" placeholder="Ex. Cykolomwenyo"
+                maxlength="30" required>
+            @error('nome')
                 <p class="error">{{ $message }}</p>
             @enderror
         </div>
 
         {{-- Last Name --}}
         <div class="mb-4">
-            <label for="last_name">Último Nome</label>
-            <input type="text" name="last_name" id="last_name" value="{{ old('last_name') }}" placeholder="Ex. Mwana"
+            <label for="sobrenome">Último Nome</label>
+            <input type="text" name="sobrenome" id="sobrenome" value="{{ old('sobrenome') }}" placeholder="Ex. Mwana"
                 maxlength="30" required>
-            @error('last_name')
+            @error('sobrenome')
                 <p class="error">{{ $message }}</p>
             @enderror
         </div>

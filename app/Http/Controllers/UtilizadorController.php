@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Events\UserCreated;
-use App\Models\Usuario;
 use App\Models\Utilizador;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
+
 
 class UtilizadorController extends Controller
 {
@@ -23,9 +22,13 @@ class UtilizadorController extends Controller
      */
     public function store(Request $request)
     {
+        if (Auth::check()) {
+            return;
+        }
+
         $rules = [
-            'first_name' => ['required', 'string', 'min:3', 'max:45'],
-            'last_name' => ['required', 'string', 'min:3', 'max:100'],
+            'nome' => ['required', 'string', 'min:3', 'max:45'],
+            'sobrenome' => ['required', 'string', 'min:3', 'max:100'],
             'password' => ['required', 'string', 'min:8', 'max:255', 'confirmed'],
             'email' => [
                 'string',
@@ -34,19 +37,18 @@ class UtilizadorController extends Controller
                 'lowercase',
                 'email:rfc',
                 'unique:utilizador',
-
             ]
         ];
 
         $error_messages = [
-            'first_name.required' => 'Por favor, preencha o nome.',
-            'first_name.string' => 'O nome deve ser apenas letras.',
-            'first_name.min' => 'O nome precisa ter pelo menos 3 letras.',
-            'first_name.max' => 'O nome não pode ter mais de 45 letras.',
-            'last_name.required' => 'Por favor, preencha o sobrenome.',
-            'last_name.string' => 'O sobrenome deve ser apenas letras.',
-            'last_name.min' => 'O sobrenome precisa ter pelo menos 3 letras.',
-            'last_name.max' => 'O sobrenome não pode ter mais de 100 letras.',
+            'nome.required' => 'Por favor, preencha o nome.',
+            'nome.string' => 'O nome deve ser apenas letras.',
+            'nome.min' => 'O nome precisa ter pelo menos 3 letras.',
+            'nome.max' => 'O nome não pode ter mais de 45 letras.',
+            'sobrenome.required' => 'Por favor, preencha o sobrenome.',
+            'sobrenome.string' => 'O sobrenome deve ser apenas letras.',
+            'sobrenome.min' => 'O sobrenome precisa ter pelo menos 3 letras.',
+            'sobrenome.max' => 'O sobrenome não pode ter mais de 100 letras.',
             'foto.string' => 'A foto deve ser um texto válido.',
             'foto.min' => 'O texto da foto precisa ter pelo menos 4 caracteres.',
             'foto.max' => 'O texto da foto não pode ter mais de 255 caracteres.',
@@ -62,20 +64,20 @@ class UtilizadorController extends Controller
             'email.email.rfc' => 'O formato do e-mail não está correto.',
         ];
 
-        $request->validate($rules, $error_messages);
-        $nome = Str::ucfirst(trim($request->first_name));
-        $sobrenome =
-            trim(Str::of($request->last_name)->headline());
-        $email = Str::of(trim($request->email))->lower();
-
-        $new_user = Utilizador::create([
-            'nome' => $nome,
-            'sobrenome' =>
-            $sobrenome,
-            'email' => $email,
-            'password' => $request->password,
-        ]);
+        $fields = $request->validate($rules, $error_messages);
+        $new_user = Utilizador::create($fields);
         event(new UserCreated($new_user));
+
         return back()->with('created', 'Tanakwé pange yami!!! Abra o seu email e ative a sua conta.');
+    }
+
+    public function logout(Request $request)
+    {
+        if (Auth::check()) {
+            Auth::logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+        }
+        return redirect('/');
     }
 }

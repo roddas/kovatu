@@ -32,10 +32,14 @@
             </div>
             {{-- Submit button --}}
             <button type="submit" class="">Entrar</button>
+            @error('ERROR_AUTH')
+                <p class="error my-1 text-base">{{ $message }}</p>
+            @enderror
             <p class="my-4">
                 <a href="#" class="link my-2">Esqueceu a senha ?</a>
             </p>
             <a href="{{ route('signup') }}" class="link mb-4">Criar uma conta</a>
+
         </form>
 
         {{-- Quotes side --}}
