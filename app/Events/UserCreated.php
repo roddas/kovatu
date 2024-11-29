@@ -14,13 +14,13 @@ use Illuminate\Queue\SerializesModels;
 class UserCreated
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
+    public $utilizador;
     /**
      * Create a new event instance.
      */
-    public function __construct(public Utilizador $utilizador)
+    public function __construct(public Utilizador $user)
     {
-        dd($utilizador);
+        $this->utilizador = $user;
     }
 
     /**
