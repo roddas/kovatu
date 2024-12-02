@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\QuotesController;
 use App\Http\Controllers\UtilizadorController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -39,13 +40,25 @@ Route::prefix('public')->group(function () {
     Route::post('signup', [UtilizadorController::class, 'store'])->name('signup');
 });
 
-// Home page
+// After the login
 Route::prefix('home')->group(function () {
 
-    // About page
+    // Home's page
     Route::get('/', function () {
         return view('home.home');
     })->name('home');
+
+    // Quote's page
+    Route::get('proverbio', [QuotesController::class, 'index'])->name('proverbio');
+
+    // Fake routes
+    Route::get('dicionario', [QuotesController::class, 'index'])->name('dicionario');
+    Route::get('gramatica', [QuotesController::class, 'index'])->name('gramatica');
+    Route::get('suporte', [QuotesController::class, 'index'])->name('suporte');
+    Route::get('sobre', [QuotesController::class, 'index'])->name('sobre');
+    Route::get('forum', [QuotesController::class, 'index'])->name('forum');
+
+
 
     Route::post('logout', [UtilizadorController::class, 'logout'])->name('logout');
 });
