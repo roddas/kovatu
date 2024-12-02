@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LinguaModel;
+use App\Models\QuotesModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,8 +14,11 @@ class QuotesController extends Controller
      */
     public function index()
     {
-
-        return view('home.quotes');
+        // $quotes = QuotesModel::all();
+        $languages = LinguaModel::all();
+        // dd($languages);
+        // dd($languages->toArray());
+        return view('home.quotes', ['proverbios' => array(), 'linguas' => $languages]);
     }
     /**
      * Store a newly created resource in storage.

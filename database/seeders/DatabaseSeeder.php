@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Utilizador;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,11 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Utilizador::updateOrCreate([
-            'email' => 'fakemail@email.com',
-            'nome' => 'Cykolomwenyo',
-            'sobrenome' => 'Mulemvu',
-            'password' => '123456',
-        ]);
+        $this->call(LinguaSeeder::class);
+        $this->call(DefaultUserSeeder::class);
     }
 }
