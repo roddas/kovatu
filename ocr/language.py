@@ -62,7 +62,7 @@ if __name__ == "__main__":
         reorganized_rows = reorganize_csv(csv_lines)
 
         # Write the reorganized content to a new CSV file
-        with open(output_file, "a", encoding="utf-8", newline="") as outfile:
+        with open(output_file, "w", encoding="utf-8", newline="") as outfile:
             writer = csv.writer(outfile, delimiter=";")
             writer.writerows(reorganized_rows)
 
