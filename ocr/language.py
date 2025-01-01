@@ -43,6 +43,7 @@ def reorganize_csv(lines):
     if portuguese_buffer:
         reorganized_rows.append([" ".join(portuguese_buffer)])
 
+    # Remove the Portuguese buffer entirely from the output
     return reorganized_rows
 
 if __name__ == "__main__":
@@ -55,7 +56,7 @@ if __name__ == "__main__":
 
     try:
         # Read the CSV file
-        with open(input_file, "r", encoding="utf-8") as infile:
+        with open(input_file, "r", encoding="utf-8", errors="ignore") as infile:
             csv_lines = infile.readlines()
 
         # Reorganize the CSV
@@ -64,7 +65,8 @@ if __name__ == "__main__":
         # Write the reorganized content to a new CSV file
         with open(output_file, "w", encoding="utf-8", newline="") as outfile:
             writer = csv.writer(outfile, delimiter=";")
-            writer.writerows(reorganized_rows)
+            for row in reorganized_rows:
+                writer.writerow(row)
 
         print(f"Reorganized CSV saved to: {output_file}")
     except FileNotFoundError:
