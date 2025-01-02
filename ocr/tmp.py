@@ -1,32 +1,38 @@
 import csv
 import sys
 
-def process_csv(input_file, output_file, error_file):
+def process_csv(input_file, output_file, ignored_file):
     with open(input_file, mode='r', encoding='utf-8') as infile, \
          open(output_file, mode='w', encoding='utf-8', newline='') as outfile, \
-         open(error_file, mode='w', encoding='utf-8', newline='') as errorfile:
+         open(ignored_file, mode='w', encoding='utf-8', newline='') as ignoredfile:
 
-        reader = csv.reader(infile, delimiter=';')
-        writer = csv.writer(outfile, delimiter=';')
-        error_writer = csv.writer(errorfile, delimiter=';')
+        writer = csv.writer(outfile, delimiter=',')
+        ignored_writer = csv.writer(ignoredfile, delimiter=',')
 
-        for row in reader:
-            if len(row) == 3:  # Linhas com 3 colunas
-                new_row = [row[0], f"{row[1]} {row[2]}"]
-                writer.writerow(new_row)
-            elif len(row) == 2:  # Linhas com 2 colunas
-                new_row = [row[0], row[1]]
-                writer.writerow(new_row)
-            else:  # Linhas com menos de 2 colunas
-                error_writer.writerow(row)
+        # Escreve o cabeçalho no arquivo de saída
+        writer.writerow(["lingua", "proverbio", "interpretacao"])
+
+        for line in infile:
+            # Divide a linha em provérbio (maiúsculas) e interpretação (minúsculas)
+            parts = line.strip().split(",", 1)
+            if len(parts) == 2:
+                proverb = parts[0].strip()  # Provérbio em maiúsculas
+                interpretation = parts[1].strip()  # Interpretação em minúsculas
+                # Verifica se o provérbio está em maiúsculas
+                if proverb.isupper():
+                    writer.writerow(["English", proverb, interpretation])
+                else:
+                    ignored_writer.writerow([line.strip()])
+            else:
+                ignored_writer.writerow([line.strip()])
 
 if __name__ == "__main__":
-    if len(sys.argv) != 3:
-        print("Uso: python script.py <arquivo_entrada.csv> <arquivo_saida.csv>")
+    if len(sys.argv) != 4:
+        print("Uso: python script.py <arquivo_entrada.txt> <arquivo_saida.csv> <ignored.txt>")
         sys.exit(1)
 
     input_file = sys.argv[1]
     output_file = sys.argv[2]
-    error_file = "2_lines.txt"  # Arquivo para salvar as linhas com menos de 2 colunas
+    ignored_file = sys.argv[3]
 
-    process_csv(input_file, output_file, error_file)
+    process_csv(input_file, output_file, ignored_file)
