@@ -1,39 +1,29 @@
+import json
 import csv
 import sys
 
-def process_csv(input_file, output_file, ignored_file):
-    with open(input_file, mode='r', encoding='utf-8') as infile, \
-         open(output_file, mode='w', encoding='utf-8', newline='') as outfile, \
-         open(ignored_file, mode='w', encoding='utf-8', newline='') as ignoredfile:
+def json_to_csv(input_file, output_file):
+    # Open the JSON file and load the data
+    with open(input_file, mode='r', encoding='utf-8') as json_file:
+        data = json.load(json_file)
 
-        writer = csv.writer(outfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
-        ignored_writer = csv.writer(ignoredfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
+    # Open the CSV file for writing
+    with open(output_file, mode='w', encoding='utf-8', newline='') as csv_file:
+        writer = csv.DictWriter(csv_file, fieldnames=["lingua","proverbio","interpretacao"], quotechar='"', quoting=csv.QUOTE_ALL)
 
-        # Escreve o cabeçalho no arquivo de saída
-        writer.writerow(['lingua', 'proverbio', 'interpretacao'])
+        # Write the header
+        writer.writeheader()
 
-        for line in infile:
-            # Remove espaços extras e divide a linha no primeiro ponto
-            parts = line.strip().split('.', 1)
-            if len(parts) == 2:
-                proverb = parts[0].strip()  # Provérbio (em maiúsculas)
-                interpretation = parts[1].strip()  # Interpretação (em minúsculas)
-
-                # Verifica se o provérbio está em maiúsculas
-                if proverb.isupper():
-                    writer.writerow(['English', proverb, interpretation])
-                else:
-                    ignored_writer.writerow([line.strip()])
-            else:
-                ignored_writer.writerow([line.strip()])
+        # Write the rows to the CSV
+        for item in data:
+            writer.writerow(item)
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        print("Uso: python script.py <arquivo_entrada.txt> <arquivo_saida.csv> <ignored.txt>")
+    if len(sys.argv) != 3:
+        print("Usage: python script.py <input_file.json> <output_file.csv>")
         sys.exit(1)
 
     input_file = sys.argv[1]
     output_file = sys.argv[2]
-    ignored_file = sys.argv[3]
 
-    process_csv(input_file, output_file, ignored_file)
+    json_to_csv(input_file, output_file)
