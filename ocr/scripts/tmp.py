@@ -6,21 +6,22 @@ def process_csv(input_file, output_file, ignored_file):
          open(output_file, mode='w', encoding='utf-8', newline='') as outfile, \
          open(ignored_file, mode='w', encoding='utf-8', newline='') as ignoredfile:
 
-        writer = csv.writer(outfile, delimiter=',')
-        ignored_writer = csv.writer(ignoredfile, delimiter=',')
+        writer = csv.writer(outfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
+        ignored_writer = csv.writer(ignoredfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
 
         # Escreve o cabeçalho no arquivo de saída
-        writer.writerow(["lingua", "proverbio", "interpretacao"])
+        writer.writerow(['lingua', 'proverbio', 'interpretacao'])
 
         for line in infile:
-            # Divide a linha em provérbio (maiúsculas) e interpretação (minúsculas)
-            parts = line.strip().split(",", 1)
+            # Remove espaços extras e divide a linha no primeiro ponto
+            parts = line.strip().split('.', 1)
             if len(parts) == 2:
-                proverb = parts[0].strip()  # Provérbio em maiúsculas
-                interpretation = parts[1].strip()  # Interpretação em minúsculas
+                proverb = parts[0].strip()  # Provérbio (em maiúsculas)
+                interpretation = parts[1].strip()  # Interpretação (em minúsculas)
+
                 # Verifica se o provérbio está em maiúsculas
                 if proverb.isupper():
-                    writer.writerow(["English", proverb, interpretation])
+                    writer.writerow(['English', proverb, interpretation])
                 else:
                     ignored_writer.writerow([line.strip()])
             else:
