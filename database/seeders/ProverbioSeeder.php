@@ -15,6 +15,7 @@ class ProverbioSeeder extends Seeder
     public function run(): void
     {
         if (App::environment('local')) {
+            $proverbios = [];
         }
     }
 }

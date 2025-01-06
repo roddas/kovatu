@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
         Schema::create('proverbio', function (Blueprint $table) {
             $table->increments('id_proverbio')->unsigned()->primary();
             $table->text('proverbio');
-            $table->text('explicacao');
+            $table->text('interpretacao');
             $table->foreignId('uid');
             $table->string('lingua', 100);
             $table->timestamps();

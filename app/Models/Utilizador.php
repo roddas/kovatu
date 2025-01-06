@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Carbon\Carbon;
 use Doctrine\DBAL\Types\BigIntType;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Utilizador extends Authenticatable
 {
@@ -36,7 +37,10 @@ class Utilizador extends Authenticatable
         'password' => 'hashed',
         'ativada' => 'boolean',
     ];
-
+    public function proverbios(): HasMany
+    {
+        return $this->hasMany(QuotesModel::class, 'uid');
+    }
     public function getFullNameAttribute(): string
     {
         return "{$this->nome} {$this->sobrenome}";
