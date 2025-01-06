@@ -16,10 +16,10 @@ return new class extends Migration
             $table->increments('id_proverbio')->unsigned()->primary();
             $table->text('proverbio');
             $table->text('explicacao');
-            $table->string('utilizador');
+            $table->foreignId('uid');
             $table->string('lingua', 100);
             $table->timestamps();
-            $table->foreign('utilizador')->references('email')->on('utilizador');
+            $table->foreign('uid')->references('uid')->on('utilizador');
             $table->foreign('lingua')->references('lingua')->on('lingua');
         });
     }

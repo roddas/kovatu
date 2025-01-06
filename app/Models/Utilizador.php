@@ -6,13 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Carbon\Carbon;
+use Doctrine\DBAL\Types\BigIntType;
 
 class Utilizador extends Authenticatable
 {
     use HasFactory, Notifiable;
 
     protected $table = 'utilizador';
-    protected $primaryKey = 'email';
+    protected $primaryKey = ['email', 'uid'];
     public $incrementing = false;
     protected $keyType = 'string';
     public $timestamps = true;
@@ -39,6 +40,10 @@ class Utilizador extends Authenticatable
     public function getFullNameAttribute(): string
     {
         return "{$this->nome} {$this->sobrenome}";
+    }
+    public function getUidAttribute()
+    {
+        return $this->uid;
     }
 
     public function getUpdatedAtHumanAttribute(): string
