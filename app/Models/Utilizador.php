@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Carbon\Carbon;
-use Doctrine\DBAL\Types\BigIntType;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Utilizador extends Authenticatable
@@ -14,7 +13,7 @@ class Utilizador extends Authenticatable
     use HasFactory, Notifiable;
 
     protected $table = 'utilizador';
-    protected $primaryKey = ['email', 'uid'];
+    protected $primaryKey = 'email';
     public $incrementing = false;
     protected $keyType = 'string';
     public $timestamps = true;
