@@ -19,10 +19,6 @@ class IndexController extends Controller
             return redirect('/home');
         }
       
-        Schedule::call(function () {
-            $proverbio = QuotesModel::inRandomOrder()->first();
-        })->daily();
-
         $proverbio = Cache::remember('daily_proverbio', 1440, function () {
             return QuotesModel::inRandomOrder()->first(['proverbio', 'interpretacao', 'lingua']);
         });

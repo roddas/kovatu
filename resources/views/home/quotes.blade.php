@@ -1,6 +1,6 @@
 <x-layout>
     @auth
-        <div class="bg-red-100">
+        <div class="">
             <x-base.title title="Provérbios" />
             <form action="" method="post">
                 <div class="lg:flex">
@@ -28,10 +28,9 @@
                     </section>
                 </div>
             </form>
-            <div class="paginacao">
-                {{ $proverbios->links() }}
+            <div class="paginacao  my-2 ">
+                {{ $proverbios->onEachSide(5)->links() }}
             </div>
         </div>
-
     @endauth
 </x-layout>
