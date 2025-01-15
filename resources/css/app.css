@@ -122,3 +122,7 @@ button {
 .contact-icon {
   @apply h-6 w-6 mr-2 text-primaryBlue
 }
+
+.paginacao {
+  @apply text-center;
+}

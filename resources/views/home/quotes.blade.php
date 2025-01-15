@@ -1,6 +1,6 @@
 <x-layout>
     @auth
-        <div>
+        <div class="bg-red-100">
             <x-base.title title="Provérbios" />
             <form action="" method="post">
                 <div class="lg:flex">
@@ -26,8 +26,9 @@
                             </p>
                         @endforeach
                     </section>
+                </div>
             </form>
-            <div class="a">
+            <div class="paginacao">
                 {{ $proverbios->links() }}
             </div>
         </div>
