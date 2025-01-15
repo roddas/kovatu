@@ -14,11 +14,9 @@ class QuotesController extends Controller
      */
     public function index()
     {
-        // $quotes = QuotesModel::all();
+        $quotes = QuotesModel::latest()->paginate(10);
         $languages = LinguaModel::all();
-        // dd($languages);
-        // dd($languages->toArray());
-        return view('home.quotes', ['proverbios' => array(), 'linguas' => $languages]);
+        return view('home.quotes', ['proverbios' => array(), 'linguas' => $languages, 'proverbios' => $quotes]);
     }
     /**
      * Store a newly created resource in storage.

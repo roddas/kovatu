@@ -19,7 +19,17 @@
                         <input class="my-2 bg-red-500 px-3  text-white rounded-md hover:bg-red-600 hover:cursor-pointer"
                             type="reset" value="Limpar" />
                     </section>
+                    <section class="proverbios literata-medium-italic text-lg text-justify leading-10">
+                        @foreach ($proverbios as $proverbio)
+                            <p> <a href="#"
+                                    class="mt-2 italic hover:underline my-1">{{ Str::words($proverbio['proverbio'], 10) }}</a>
+                            </p>
+                        @endforeach
+                    </section>
             </form>
+            <div class="a">
+                {{ $proverbios->links() }}
+            </div>
         </div>
 
     @endauth
