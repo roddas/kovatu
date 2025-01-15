@@ -64,8 +64,10 @@ class ProverbioSeeder extends Seeder
 
             ];
 
-            foreach ($proverbios as $proverbio) {
-                ProverbioModel::create($proverbio);
+            for ($i = 0; $i < 100; $i++) {
+                foreach ($proverbios as $proverbio) {
+                    ProverbioModel::create($proverbio);
+                }
             }
         }
     }
