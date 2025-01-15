@@ -7,7 +7,7 @@
         <form action="{{ route('index') }}" method="post" class="p-8 md:w-[50%]">
             @csrf
             {{-- Email --}}
-            <div class="mb-4">
+            <div class="mb-4"> 
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email" value="{{ old('email') }}"
                     placeholder="email@domain.com" required>
@@ -46,12 +46,12 @@
         <section class="my-auto">
             <img src="{{ asset('images/quotes.svg') }}" width="56" alt="">
             <div class="flex justify-center text-center">
-                <p class="text-5xl literata-thin-italic text-primaryBlue w-[80%] text-justify">Yamwangana ixi kuswa</p>
+                <p class="text-5xl literata-thin-italic text-primaryBlue w-[80%] text-justify">{{$proverbio["proverbio"]}}</p>
             </div>
             <img src="{{ asset('images/quotes.svg') }}" width="56" alt=""
                 class="rotate-180 float-right mb-5">
             <p class=" text-base text-primaryBlue mt-12 ml-5">
-                - Ditado popular Cokwé
+                - Ditado popular {{$proverbio["lingua"]}}
             </p>
         </section>
     </section>

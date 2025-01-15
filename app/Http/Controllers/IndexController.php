@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\QuotesModel;
+use Illuminate\Support\Facades\Schedule;
+use Illuminate\Support\Facades\Cache;
 
 class IndexController extends Controller
 {
@@ -15,8 +18,16 @@ class IndexController extends Controller
         if (Auth::check()) {
             return redirect('/home');
         }
+      
+        Schedule::call(function () {
+            $proverbio = QuotesModel::inRandomOrder()->first();
+        })->daily();
 
-        return view('landing');
+        $proverbio = Cache::remember('daily_proverbio', 1440, function () {
+            return QuotesModel::inRandomOrder()->first(['proverbio', 'interpretacao', 'lingua']);
+        });
+
+        return view('landing', ['proverbio' => $proverbio]);
     }
     /**
      * Store a newly created resource in storage.

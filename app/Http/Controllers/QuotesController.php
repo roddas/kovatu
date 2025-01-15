@@ -16,7 +16,7 @@ class QuotesController extends Controller
     {
         $quotes = QuotesModel::latest()->paginate(10);
         $languages = LinguaModel::all();
-        return view('home.quotes', ['proverbios' => array(), 'linguas' => $languages, 'proverbios' => $quotes]);
+        return view('home.quotes', [ 'linguas' => $languages, 'proverbios' => $quotes]);
     }
     /**
      * Store a newly created resource in storage.
