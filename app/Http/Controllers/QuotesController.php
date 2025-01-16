@@ -14,8 +14,8 @@ class QuotesController extends Controller
      */
     public function index()
     {
-        $quotes = QuotesModel::latest()->paginate(10);
-        $languages = LinguaModel::all();
+        $quotes = QuotesModel::select(['id_proverbio', 'proverbio', 'lingua'])->latest()->paginate(10);
+        $languages = array_unique(QuotesModel::pluck('lingua')->toArray());
         return view('home.quotes', [ 'linguas' => $languages, 'proverbios' => $quotes]);
     }
     /**

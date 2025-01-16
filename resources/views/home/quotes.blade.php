@@ -12,7 +12,7 @@
                                 <input type="radio" name="lingua" id="checkbox{{ $index }}"
                                     value="{{ $language }}" class="mr-2 checkbox">
                                 <label for="checkbox{{ $index }}" class="font-normal ">
-                                    {{ $language['lingua'] }}
+                                    {{ $language }}
                                 </label>
                             </div>
                         @endforeach
