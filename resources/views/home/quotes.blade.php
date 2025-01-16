@@ -21,7 +21,7 @@
                     </section>
                     <section class="proverbios literata-medium-italic text-lg text-justify leading-10">
                         @foreach ($proverbios as $proverbio)
-                            <p> <a href="#"
+                            <p> <a href={{ route('ver_proverbio', $proverbio['id_proverbio']) }}
                                     class="mt-2 italic hover:underline my-1">{{ Str::words($proverbio['proverbio'], 10) }}</a>
                             </p>
                         @endforeach

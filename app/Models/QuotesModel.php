@@ -35,8 +35,12 @@ class QuotesModel extends Model
     /**
      * Retorna o autor do provérbio (nome completo).
      */
-    public function getAuthorAttribute(): string
+    public function getAuthorAttribute(): array
     {
-        return "{$this->utilizador->nome} {$this->utilizador->sobrenome}";
+        $author = $this->utilizador;  // Acessa o relacionamento
+        return [
+            'fullname' => "{$author->nome} {$author->sobrenome}",
+            'uid' => $this->uid,
+        ]; 
     }
 }

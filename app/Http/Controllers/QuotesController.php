@@ -18,6 +18,12 @@ class QuotesController extends Controller
         $languages = array_unique(QuotesModel::pluck('lingua')->toArray());
         return view('home.quotes', [ 'linguas' => $languages, 'proverbios' => $quotes]);
     }
+    public function viewQuote($idProverbio)
+    {
+        $id = $idProverbio;
+        $quotes = QuotesModel::find($id);
+        return view('home.view_quote', [ 'proverbio' => $quotes, 'autor' => $quotes->autor]);
+    }
     /**
      * Store a newly created resource in storage.
      */

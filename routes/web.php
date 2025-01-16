@@ -50,6 +50,7 @@ Route::prefix('home')->group(function () {
 
     // Quote's page
     Route::get('proverbio', [QuotesController::class, 'index'])->name('proverbio');
+    Route::get('proverbio/{idProverbio}', [QuotesController::class, 'viewQuote'])->name('ver_proverbio');
 
     // Fake routes
     Route::get('dicionario', [QuotesController::class, 'index'])->name('dicionario');

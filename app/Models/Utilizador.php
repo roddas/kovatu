@@ -13,9 +13,9 @@ class Utilizador extends Authenticatable
     use HasFactory, Notifiable;
 
     protected $table = 'utilizador';
-    protected $primaryKey = 'email';
+    protected $primaryKey = 'uid';
     public $incrementing = false;
-    protected $keyType = 'string';
+    protected $keyType = 'int';
     public $timestamps = true;
 
     protected $fillable = [
@@ -44,9 +44,9 @@ class Utilizador extends Authenticatable
     {
         return "{$this->nome} {$this->sobrenome}";
     }
-    public function getUidAttribute()
+    public function getEmailAttribute()
     {
-        return $this->uid;
+        return $this->email;
     }
 
     public function getUpdatedAtHumanAttribute(): string
