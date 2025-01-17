@@ -31,7 +31,7 @@
             <div class="paginacao  my-2 ">
                 {{ $proverbios->onEachSide(5)->links() }}
             </div>
-    <x-base.home />
+            <x-base.home />
 
         </div>
     @endauth

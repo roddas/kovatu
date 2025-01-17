@@ -58,11 +58,10 @@ Route::prefix('home')->group(function () {
     Route::get('suporte', [QuotesController::class, 'index'])->name('suporte');
     Route::get('sobre', [QuotesController::class, 'index'])->name('sobre');
     Route::get('forum', [QuotesController::class, 'index'])->name('forum');
-
     Route::post('logout', [UtilizadorController::class, 'logout'])->name('logout');
 });
 
 // The last one
 Route::fallback(function () {
-    return view('landing');
+    return view('error.404');
 });

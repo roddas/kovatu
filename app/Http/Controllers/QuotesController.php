@@ -16,13 +16,17 @@ class QuotesController extends Controller
     {
         $quotes = QuotesModel::select(['id_proverbio', 'proverbio', 'lingua'])->latest()->paginate(10);
         $languages = array_unique(QuotesModel::pluck('lingua')->toArray());
-        return view('home.quotes', [ 'linguas' => $languages, 'proverbios' => $quotes]);
+        return view('home.quotes', ['linguas' => $languages, 'proverbios' => $quotes]);
     }
     public function viewQuote($idProverbio)
     {
         $id = $idProverbio;
         $quotes = QuotesModel::find($id);
-        return view('home.view_quote', [ 'proverbio' => $quotes, 'autor' => $quotes->autor]);
+
+        if ($quotes) {
+            return view('home.view_quote', ['proverbio' => $quotes, 'autor' => $quotes->autor]);
+        }
+        return view('error.404');
     }
     /**
      * Store a newly created resource in storage.
