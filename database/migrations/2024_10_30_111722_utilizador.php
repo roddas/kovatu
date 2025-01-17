@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('utilizador', function (Blueprint $table) {
-            $table->string('email', 255)->primary();
+            $table->bigIncrements('uid')->primary();
+            $table->string('email', 255)->unique();
             $table->string('nome', 45);
             $table->string('sobrenome', 100);
             $table->string('foto', 255)->default('default.svg');

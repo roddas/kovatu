@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
         Schema::create('proverbio', function (Blueprint $table) {
             $table->increments('id_proverbio')->unsigned()->primary();
             $table->text('proverbio');
-            $table->text('explicacao');
-            $table->string('utilizador');
+            $table->text('interpretacao');
+            $table->foreignId('uid');
             $table->string('lingua', 100);
             $table->timestamps();
-            $table->foreign('utilizador')->references('email')->on('utilizador');
+            $table->foreign('uid')->references('uid')->on('utilizador');
             $table->foreign('lingua')->references('lingua')->on('lingua');
         });
     }

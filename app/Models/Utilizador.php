@@ -6,15 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Utilizador extends Authenticatable
 {
     use HasFactory, Notifiable;
 
     protected $table = 'utilizador';
-    protected $primaryKey = 'email';
+    protected $primaryKey = 'uid';
     public $incrementing = false;
-    protected $keyType = 'string';
+    protected $keyType = 'int';
     public $timestamps = true;
 
     protected $fillable = [
@@ -35,10 +36,17 @@ class Utilizador extends Authenticatable
         'password' => 'hashed',
         'ativada' => 'boolean',
     ];
-
+    public function proverbios(): HasMany
+    {
+        return $this->hasMany(QuotesModel::class, 'uid');
+    }
     public function getFullNameAttribute(): string
     {
         return "{$this->nome} {$this->sobrenome}";
+    }
+    public function getEmailAttribute()
+    {
+        return $this->email;
     }
 
     public function getUpdatedAtHumanAttribute(): string

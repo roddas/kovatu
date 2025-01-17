@@ -14,11 +14,19 @@ class QuotesController extends Controller
      */
     public function index()
     {
-        // $quotes = QuotesModel::all();
-        $languages = LinguaModel::all();
-        // dd($languages);
-        // dd($languages->toArray());
-        return view('home.quotes', ['proverbios' => array(), 'linguas' => $languages]);
+        $quotes = QuotesModel::select(['id_proverbio', 'proverbio', 'lingua'])->latest()->paginate(10);
+        $languages = array_unique(QuotesModel::pluck('lingua')->toArray());
+        return view('home.quotes', ['linguas' => $languages, 'proverbios' => $quotes]);
+    }
+    public function viewQuote($idProverbio)
+    {
+        $id = $idProverbio;
+        $quotes = QuotesModel::find($id);
+
+        if ($quotes) {
+            return view('home.view_quote', ['proverbio' => $quotes, 'autor' => $quotes->autor]);
+        }
+        return view('error.404');
     }
     /**
      * Store a newly created resource in storage.

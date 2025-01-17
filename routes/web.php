@@ -50,6 +50,7 @@ Route::prefix('home')->group(function () {
 
     // Quote's page
     Route::get('proverbio', [QuotesController::class, 'index'])->name('proverbio');
+    Route::get('proverbio/{idProverbio}', [QuotesController::class, 'viewQuote'])->name('ver_proverbio');
 
     // Fake routes
     Route::get('dicionario', [QuotesController::class, 'index'])->name('dicionario');
@@ -57,11 +58,10 @@ Route::prefix('home')->group(function () {
     Route::get('suporte', [QuotesController::class, 'index'])->name('suporte');
     Route::get('sobre', [QuotesController::class, 'index'])->name('sobre');
     Route::get('forum', [QuotesController::class, 'index'])->name('forum');
-
     Route::post('logout', [UtilizadorController::class, 'logout'])->name('logout');
 });
 
 // The last one
 Route::fallback(function () {
-    return view('landing');
+    return view('error.404');
 });

@@ -69,6 +69,12 @@
   font-style: normal;
 }
 
+.roboto-medium-400 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 .roboto-bold {
   font-family: "Roboto", sans-serif;
   font-weight: 700;
@@ -121,4 +127,8 @@ button {
 
 .contact-icon {
   @apply h-6 w-6 mr-2 text-primaryBlue
+}
+
+.paginacao {
+  @apply text-center;
 }
