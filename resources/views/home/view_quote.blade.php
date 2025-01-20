@@ -5,7 +5,7 @@
             <hr class="bg-primaryBlue my-2">
             <form action="" method="post">
                 <div class="lg:flex">
-                    <section class="proverbios  text-lg text-justify leading-10">
+                    <section class="proverbios  text-lg text-justify leading-10 w-full">
                         <p class="my-2  literata-medium-italic  text-gray-950 ">{{ $proverbio['proverbio'] }}</p>
                         <p class="mb-2    text-gray-700 literata-medium">{{ $proverbio['interpretacao'] }}</p>
                         <p class="mt-2 float-right roboto-medium-400 text-gray-600 ">Postado por <a

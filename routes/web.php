@@ -49,8 +49,12 @@ Route::prefix('home')->group(function () {
     })->name('home');
 
     // Quote's page
-    Route::get('proverbio', [QuotesController::class, 'index'])->name('proverbio');
+    Route::get('proverbio', [
+        QuotesController::class,
+        'index'
+    ])->name('proverbio');
     Route::get('proverbio/{idProverbio}', [QuotesController::class, 'viewQuote'])->name('ver_proverbio');
+    Route::post('proverbio', [QuotesController::class, 'getByLanguage'])->name('proverbio');
 
     // Fake routes
     Route::get('dicionario', [QuotesController::class, 'index'])->name('dicionario');
