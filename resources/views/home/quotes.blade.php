@@ -57,7 +57,7 @@
                 </div>
             </form>
             <div class="paginacao  my-2 ">
-                {{ $proverbios->onEachSide(5)->links() }}
+                {{ $proverbios->onEachSide(2)->links() }}
             </div>
             <x-base.home />
         </div>

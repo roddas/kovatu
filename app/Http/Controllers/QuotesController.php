@@ -29,7 +29,7 @@ class QuotesController extends Controller
             return view('error.404');
         }
         $language = $validator->validated()['language'];
-        $quotes = QuotesModel::select(['id_proverbio', 'proverbio', 'lingua'],)->where('lingua', $language)->paginate(10);
+        $quotes = QuotesModel::select(['id_proverbio', 'proverbio', 'lingua'],)->where('lingua', $language)->paginate(10)->appends($request->except('page'));;
         $languages = array_unique(QuotesModel::pluck('lingua')->toArray());
         return view('home.quotes', ['linguas' => $languages, 'selected' => $language, 'proverbios' => $quotes]);
     }
